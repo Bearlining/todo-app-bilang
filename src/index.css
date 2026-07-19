@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* 马卡龙色板 */
+    --pink-100: #FFB7B2;
+    --pink-200: #FF9AA2;
+    --pink-300: #FFDAC1;
+    --peach-100: #FFDAC1;
+    --peach-200: #FF9AA2;
+    --mint-100: #B5EAD7;
+    --mint-200: #C7CEEA;
+    --sky-100: #C7CEEA;
+    --sky-200: #B5EAD7;
+    --lavender-100: #E2F0CB;
+    --cream-100: #FFF5BA;
+
+    --background: 0 0% 98%;
+    --foreground: 240 5.3% 26.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 5.3% 26.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 5.3% 26.1%;
+
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 346.8 77.2% 49.8%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 346.8 77.2% 49.8%;
+    --sidebar-primary-foreground: 355.7 100% 97.3%;
+    --sidebar-accent: 220 14.3% 95.9%;
+    --sidebar-accent-foreground: 220.9 39.3% 11%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 346.8 77.2% 49.8%;
+  }
+
+  .dark {
+    --background: 240 5.9% 10%;
+    --foreground: 240 4.8% 95.9%;
+
+    --card: 240 5.9% 10%;
+    --card-foreground: 240 4.8% 95.9%;
+
+    --popover: 240 5.9% 10%;
+    --popover-foreground: 240 4.8% 95.9%;
+
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 240 4.8% 95.9%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 4.8% 95.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 240 4.8% 95.9%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 240 4.8% 95.9%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 346.8 77.2% 49.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFB7B2;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF9AA2;
+}
+
+/* 隐藏滚动条的标签容器 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* 马卡龙渐变背景 */
+.macaron-gradient {
+  background: linear-gradient(135deg, #FFB7B2 0%, #FFDAC1 50%, #B5EAD7 100%);
+}
+
+.pink-gradient {
+  background: linear-gradient(135deg, #FFB7B2 0%, #FF9AA2 100%);
+}
+
+.mint-gradient {
+  background: linear-gradient(135deg, #B5EAD7 0%, #C7CEEA 100%);
+}
+
+.peach-gradient {
+  background: linear-gradient(135deg, #FFDAC1 0%, #FFB7B2 100%);
+}
+
+/* 玻璃拟态效果 */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* 动画 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* 选择高亮 */
+::selection {
+  background: #FFB7B2;
+  color: white;
+}
+
+/* 输入框自动填充样式 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  box-shadow: 0 0 0 1000px white inset !important;
+}
