@@ -1,3 +1,4 @@
+import { SyncDialog } from './components/sync/SyncDialog';
 import React, { useState, useEffect } from 'react';
 import { TodoProvider } from './context/TodoContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -152,6 +153,7 @@ function AppContent() {
         <FallingItemsLayer />
         </FallingItemsProvider>
       </TodoProvider>
+        <SyncDialog />
     </ThemeProvider>
   );
 }

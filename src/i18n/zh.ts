@@ -326,6 +326,25 @@ export const translations = {
   'stats.trend.up': '↑ 上升',
   'stats.trend.down': '↓ 下降',
   'stats.trend.neutral': '→ 持平',
+
+  // ============= URL同步 =============
+  'sync.detected': '检测到待办数据，是否同步？',
+  'sync.merge': '合并',
+  'sync.replace': '替换',
+  'sync.discard': '忽略',
+  'sync.linkCopied': '同步链接已复制到剪贴板',
+  'sync.copyLink': '复制同步链接',
+  'sync.howItWorks': '如何跨设备同步？',
+  'sync.howItWorksDesc': '在B设备打开此链接即可同步数据。同步链接只需使用一次，之后用普通链接打开即可。',
+  'sync.linkCopiedHint': '链接已复制，可粘贴分享给其他设备',
+  'sync.conflictHint': '当前设备有数据，请选择处理方式',
+  'sync.noDataHint': '将A设备的数据同步到本设备',
+  'sync.mergeConflict': '检测到数据冲突，请选择保留哪边',
+  'sync.syncing': '正在同步数据...',
+  'sync.success': '同步成功！',
+  'sync.failed': '同步失败，请重试',
+  'sync.importedCount': '已导入 {count} 条待办',
+  'sync.replacedCount': '已替换为 {count} 条待办',
 } as const;
 
 // 导出 key 联合类型,供 useTranslation 的 t 函数做类型保护

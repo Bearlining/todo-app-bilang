@@ -14,6 +14,7 @@ import { useTodo } from '../context/TodoContext';
 import { useTheme } from '../context/ThemeContext';
 import { useTranslation } from '../i18n';
 import { themes, ThemeName } from '../lib/theme';
+import { generateSyncLink } from '../lib/sync';
 import { Card } from '../components/ui/card';
 import { Todo, SubTask } from '../types/todo';
 
@@ -152,6 +153,19 @@ export function Settings() {
   // 思路:用独立的 success 状态而非字符串包含判断
   const [importSuccess, setImportSuccess] = useState(false);
 
+
+  // 复制同步链接
+  const handleCopySyncLink = async () => {
+    const link = generateSyncLink(state.todos);
+    try {
+      await navigator.clipboard.writeText(link);
+      setImportStatus(t('sync.linkCopied'));
+      setTimeout(() => setImportStatus(''), 3000);
+    } catch {
+      setImportStatus(t('sync.failed'));
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <main className="max-w-md mx-auto px-4 py-4 space-y-6">
@@ -173,7 +187,20 @@ export function Settings() {
               const colors = getThemePreviewColors(key);
               const isSelected = theme === key;
 
-              return (
+            
+  // 复制同步链接
+  const handleCopySyncLink = async () => {
+    const link = generateSyncLink(state.todos);
+    try {
+      await navigator.clipboard.writeText(link);
+      setImportStatus(t('sync.linkCopied'));
+      setTimeout(() => setImportStatus(''), 3000);
+    } catch {
+      setImportStatus(t('sync.failed'));
+    }
+  };
+
+  return (
                 <button
                   key={key}
                   onClick={() => setTheme(key)}
@@ -307,8 +334,22 @@ export function Settings() {
             </div>
           </div>
 
-          <p className="mt-4 text-xs text-gray-400 text-center">
-            {t('settings.data.exportHint')}
+                    </div>
+
+          {/* 复制同步链接 */}
+          <button
+            onClick={handleCopySyncLink}
+            className="w-full flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-lavender-50 to-peach-50 rounded-xl hover:from-lavender-100 hover:to-peach-100 transition-all duration-200 mt-3"
+          >
+            <Link2 className="w-5 h-5 text-purple-400" />
+            <div className="text-left">
+              <div className="text-sm font-medium text-gray-700">{t('sync.copyLink')}</div>
+              <div className="text-xs text-gray-400">{t('sync.linkCopiedHint')}</div>
+            </div>
+          </button>
+
+          <p className="mt-3 text-xs text-gray-400 text-center">
+            {t('sync.howItWorksDesc')}
           </p>
         </Card>
 
